@@ -104,7 +104,7 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
 
 ![alt](https://github.com/zerodawnbr/zerodawntoolbox/blob/main/imgs/kitboasvindasmochila.png)
 
-# 🎁 Explicação dos campos – WelcomeKit
+# 📂 Explicação dos campos – WelcomeKit
 
 ## Seção principal (`config.json`)
 
