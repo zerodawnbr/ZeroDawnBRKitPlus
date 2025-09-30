@@ -18,7 +18,7 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
 
 **Se estiver apenas com o mod KitBoasVindas**
 
-`$profile:/ZeroDawnBRKit/Config.json`
+`$profile:/ZeroDawnBRKitPlus/Config.json`
 
 
 ---
@@ -35,141 +35,32 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
   Defina uma porcentagem de chance para spawnar itens aleatórios.  
   Exemplo: `randomItemPercentage = 50` → 50% de chance de receber o item.
 
-- **Sistema VIP**  
-  Permite configurar kits exclusivos para jogadores VIP com base no **SteamID**.  
-  Cada grupo (Gold, Silver, Bronze) pode ter itens diferentes.
+- **Criação de vários kits**  
 
 ## 💡 Importante
-  Para alguns servidores, o uso da barra (\\) no atributo ***keywords*** para definir as palavras chaves não funciona, você pode usar outro caractere como **!** ou **-**, ou até mesmo deixar apenas a palavra. Mas cuidado com a palavra que usar para não atrapalhar as mensagens do chat.
+  Para alguns servidores, o uso da barra (\\) no atributo ***kits*** para definir as palavras chaves não funciona, você pode usar outro caractere como **!** ou **-**, ou até mesmo deixar apenas a palavra. Mas cuidado com a palavra que usar para não atrapalhar as mensagens do chat.
 
 ---
 
 ## Arquivo json
 ```json
 {
-    "version": "1.0.1",
-    "info": "This file defines which items the player will receive. VIP players will receive additional items as part of the benefit.",
-    "container": "WoodenCrate",
+    "versao": "1.0.0",
+    "info": "The Welcome Kit is a feature that delivers starter items to the player when they first join the server.",
     "spawnInventory": 0,
-    "message1": "Welcome, Here's your starter kit.",
-    "licensedTo": "Licensed To",
-    "serverIP": "servidor:porta",
-    "serverName": "Server Name",
-    "serverNo": "1",
-    "randomItemPercentage": 100,
-    "items": [
-        {
-            "classType": "Apple",
-            "quantity": 1,
-            "attachments": []
-        },
-        {
-            "classType": "Plum",
-            "quantity": 1,
-            "attachments": []
-        },
-        {
-            "classType": "Candycane_RedGreen",
-            "quantity": 1,
-            "attachments": []
-        },
-        {
-            "classType": "Rope",
-            "quantity": 1,
-            "attachments": []
-        },
-        {
-            "classType": "Shovel",
-            "quantity": 1,
-            "attachments": []
-        },
-        {
-            "classType": "BBP_Blueprint",
-            "quantity": 1,
-            "attachments": []
-        },
-        {
-            "classType": "TerritoryFlagKit",
-            "quantity": 1,
-            "attachments": []
-        }
-    ],
-    "keywords": [
-        "!kit",
-        "kit",
-        "\\kit",
-        "\\welcomepack",
-        "\\welcomekit",
-        "\\boasvindas",
-        "!boasvindas",
-        "boasvindas"
-    ],
-    "vips": {
-        "Gold": {
-            "steamids": [
-                "76561198000000001",
-                "76561198000000002"
-            ],
+    "message1": "Receba o seu kit",
+    "message2": "O kit foi entregue",
+    "message3": "Você já recebeu o seu pacote.",
+    "NotificationInChat": 1,
+    "kits": {
+        "\\kitexemplo": {
+            "container": "WoodenCrate",
             "items": [
                 {
-                    "classType": "M4A1",
-                    "quantity": 1,
-                    "attachments": [
-                        "Mag_STANAG_30Rnd",
-                        "GhillieAtt_Black",
-                        "M4_CarryHandleOptic",
-                        "UniversalLight",
-                        "M4_OEBttstck_Black",
-                        "M9A1_Bayonet",
-                        "M4_Suppressor",
-                        "Battery9V"
-                    ]
-                },
-                {
-                    "classType": "Ammo_556x45",
-                    "quantity": 1,
-                    "attachments": []
-                }
-            ]
-        },
-        "Silver": {
-            "steamids": [
-                "76561198000000003",
-                "76561198000000004"
-            ],
-            "items": [
-                {
-                    "classType": "SKS",
-                    "quantity": 1,
-                    "attachments": [
-                         "GhillieAtt_Tan",
-                         "SKS_Bayonet",
-                         "ImprovisedSuppressor",
-                         "Mag_CLIP762x39_10Rnd",
-                         "PUScopeOptic",
-                         "Battery9V"
-            ]
-                },
-                {
-                    "classType": "Ammo_762x39",
-                    "quantity": 1,
-                    "attachments": []
-                }
-            ]
-        },
-        "Bronze": {
-            "steamids": [
-                "76561198000000005"
-            ],
-            "items": [
-                {
-                    "classType": "Shotgun",
-                    "quantity": 1,
-                    "attachments": []
-                },
-                {
-                    "classType": "Ammo_12gaPellets",
-                    "quantity": 1,
+                    "classType": "Apple",
+                    "quantityMax": 1,
+                    "health": 1.0,
+                    "chance": 1.0,
                     "attachments": []
                 }
             ]
@@ -180,10 +71,10 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
 
 ## 💡 Resumindo
 
-Esse mod funciona como um **starter pack** automático:  
 - Ajuda novos jogadores a começarem equipados.  
 - Entrega kits básicos para todos.  
-- Oferece vantagens extras para jogadores VIP.  
+- Permite distribuir varios kits para o mesmo jogador.
+- Distribui apenas um vez o kit, evitando assim que o jogador receba o mesmo kit várias vezes.
 - 100% configurável pelo `Config.json`.  
 
 ![alt](https://github.com/zerodawnbr/zerodawntoolbox/blob/main/imgs/kitboasvindasmochila.png)
@@ -192,142 +83,78 @@ Esse mod funciona como um **starter pack** automático:
 
 ## Seção principal (`config.json`)
 
-| Campo                | Descrição                                                                                 | Valor Padrão / Exemplo |
+| Atributo                | Descrição                                                                                 | Valor Padrão / Exemplo |
 |-----------------------|-------------------------------------------------------------------------------------------|-------------------------|
 | `version`             | Versão do sistema de Welcome Kit.                                                         | `"1.0.1"`              |
-| `info`               | Texto informativo/descritivo do sistema.                                                   | `"This file defines which items the player will receive..."` |
-| `container`          | Define o contêiner usado para entregar os itens. Pode ser caixa, barril, baú, etc.              | `"WoodenCrate"`         |
-| `spawnInventory`  | Define onde os itens serão spawnados: <br> `1` = no inventário do jogador <br> `0` = fora, em um container. | `0` |
-| `message1`           | Mensagem exibida ao jogador ao receber o kit.                                              | `"Welcome, Here's your starter kit."` |
-| `randomItemPercentage` | Chance percentual de um item aleatório ser incluído no kit.                              | `100` (sempre recebe todos) |
-| `items[]`            | Lista de itens básicos que todos jogadores recebem (classe e quantidade).                  | `[{"classType": "Apple","quantity": 1}, ...]` |
-| `keywords[]`     | Lista de comandos (chat) que o jogador pode digitar para receber o kit.                    | `["\\kit", "\\welcomepack", "\\welcomekit", "\\boasvindas"]` |
+| `info`                | Texto informativo/descritivo do sistema.                                                   | `"This file defines which items the player will receive..."` |
+| `message1`            | Mensagem exibida ao jogador ao receber o kit.                                              | `"Você está recebendo o seu kit"` |
+| `message1`            | Mensagem exibida ao jogador ao receber o kit.                                              | `"O kit foi entregue"` |
+| `message1`            | Mensagem exibida ao jogador ao receber o kit.                                              | `"Você já recebeu o seu pacote. Você só pode solicitar uma vez por temporada."` |
+| `spawnInventory`      | Define onde os itens serão spawnados: <br> `1` = no inventário do jogador <br> `0` = fora, em um container. | `0` |
+| `NotificationInChat`  | Notificação no chat do jogo: <br> `1` = exibe <br> `0` = oculta. | `0` |
 
 ---
 
-## Estrutura dos `items`
+## Estrutura dos `kits`
 
-| Campo        | Descrição                                               | Exemplo |
+| Atributo        | Descrição                                               | Exemplo |
+|--------------|---------------------------------------------------------|---------|
+| `nome do kit`| Você pode definir um nome qualquer para o kit.          | `\kitarmas` <br> `\kitsaude` <br>  etc...         |
+| `container`  | Define o contêiner usado para entregar os itens. Pode ser caixa, barril, baú, etc.              | `"WoodenCrate"`         |
+| `items`      | itens que serão entregues             |          |
+
+## Estrutura dos `itens`
+
+| Atributo        | Descrição                                               | Exemplo |
 |--------------|---------------------------------------------------------|---------|
 | `classType`  | Nome do item conforme registrado no `types.xml`.        | `"Apple"` |
-| `quantity`   | Quantidade do item a ser entregue.                      | `1`       |
+| `quantityMax`   | Quantidade do item a ser entregue.                      | `1`       |
+| `health`   | Saúde do item a ser entregue. 1 = 100%, 0.7 = 70%, etc...                     | `1.0`       |
+| `chance`   | Chance do item a ser entregue. 1 = 100%, 0.7 = 70%, etc...                     | `1.0`       |
 | `attachments`| Permite anexar itens ao item principal.                 |          |
 
 ---
 
-## Seção: `vips`
-
-Sistema que permite **grupos de jogadores VIP** receberem kits diferenciados.  
-Cada nível (Gold, Silver, Bronze, etc.) pode ter **SteamIDs vinculados** e uma lista de itens próprios.
-
-| Campo            | Descrição                                                                 | Exemplo |
-|------------------|---------------------------------------------------------------------------|---------|
-| `Gold` / `Silver` / `Bronze` | Categoria de VIP (pode ser personalizada).                       | `"Gold"` |
-| `steamids[]`     | Lista de SteamIDs que pertencem ao grupo VIP.                             | `["76561198000000001","76561198000000002"]` |
-| `items[]`        | Itens extras que somente jogadores desse grupo receberão.                 | `[{"classType":"M4A1","quantity":1,"attachments": []},{"classType":"Ammo_556x45","quantity":1,"attachments": []}]` |
-
----
-
-## Estrutura dos `vips.items`
-
-| Campo        | Descrição                                        | Exemplo |
-|--------------|--------------------------------------------------|---------|
-| `classType`  | Nome do item exclusivo do VIP.                   | `"M4A1"` |
-| `quantity`   | Quantidade do item VIP a ser entregue.           | `1`      |
-| `attachments`| Permite anexar itens ao item principal.          |          |
-
 ## 📜 Registro de Kits Entregues
 
-Quando um jogador recebe o **Kit de Boas-Vindas**, o sistema cria automaticamente um arquivo chamado: $profile:/ZeroDawnBRCoreTools/WelcomeKit/welcomekit.json
+Quando um jogador recebe o **Kit de Boas-Vindas**, o sistema cria automaticamente um arquivo chamado: **welcomekit_players.json**
 
+**Se estiver com o mod ToolBox**
 
-Esse arquivo registra **quem já recebeu o kit** e os itens entregues, garantindo que o jogador **não possa receber novamente**.
+`$profile:/ZeroDawnBRCoreTools/WelcomeKit/welcomekit_players.json`
+
+**Se estiver apenas com o mod KitBoasVindas**
+
+`$profile:/ZeroDawnBRKitPlus/welcomekit_players.json`
+
+Esse arquivo registra **quem já recebeu o kit** e os kits que foram entregues, garantindo que o jogador **não possa receber novamente**.
 
 ---
 
-## 🗂️ Estrutura do `welcomekit.json`
+## 🗂️ Estrutura do `welcomekit_players.json`
 
 ```json
 {
-    "76561198000000000": {
-        "userName": "player1",
-        "steamID": "76561198868988100",
-        "date": "2025-9-24 22:24:56",
-        "items": [
-            {
-                "classType": "AmmoBox_12gaSlug_10Rnd",
-                "quantity": 1,
-                "attachments": []
-            },
-            {
-                "classType": "Apple",
-                "quantity": 1,
-                "attachments": []
-            },
-            {
-                "classType": "Plum",
-                "quantity": 1,
-                "attachments": []
-            },
-            {
-                "classType": "SodaCan_Cola",
-                "quantity": 1,
-                "attachments": []
-            },
-            {
-                "classType": "Candycane_RedGreen",
-                "quantity": 1,
-                "attachments": []
-            },
-            {
-                "classType": "Rope",
-                "quantity": 1,
-                "attachments": []
-            },
-            {
-                "classType": "Shovel",
-                "quantity": 1,
-                "attachments": []
-            },
-            {
-                "classType": "Whetstone",
-                "quantity": 1,
-                "attachments": []
-            },
-            {
-                "classType": "SKS",
-                "quantity": 1,
-                "attachments": [
-                    "GhillieAtt_Tan",
-                    "SKS_Bayonet",
-                    "ImprovisedSuppressor",
-                    "Mag_CLIP762x39_10Rnd",
-                    "PUScopeOptic",
-                    "Battery9V"
-                ]
-            },
-            {
-                "classType": "M4A1",
-                "quantity": 1,
-                "attachments": [
-                    "Mag_STANAG_30Rnd",
-                    "GhillieAtt_Black",
-                    "M4_CarryHandleOptic",
-                    "UniversalLight",
-                    "M4_OEBttstck_Black",
-                    "M9A1_Bayonet",
-                    "M4_Suppressor",
-                    "Battery9V"
-                ]
-            },
-            {
-                "classType": "NVGHeadstrap",
-                "quantity": 1,
-                "attachments": [
-                    "NVGoggles",
-                    "Battery9V"
-                ]
-            }
+    "76561198000000001": {
+        "userName": "Survivor1",
+        "steamID": "76561198000000001",
+        "date": "2025-9-30 5:38:25",
+        "claimedKits": [
+            "\\kitsaude",
+            "\\kitcomida",
+            "\\kitarmas",
+            "\\kitbase"
+        ]
+    },
+    "76561198000000002": {
+        "userName": "Survivor2",
+        "steamID": "76561198000000002",
+        "date": "2025-9-30 5:38:25",
+        "claimedKits": [
+            "\\kitsaude",
+            "\\kitcomida",
+            "\\kitarmas",
+            "\\kitbase"
         ]
     }
 }
@@ -335,12 +162,12 @@ Esse arquivo registra **quem já recebeu o kit** e os itens entregues, garantind
 
 ## 📖 Explicação dos campos – welcomekit.json
 
-| Campo       | Descrição                                                                 | Exemplo                          |
+| Atributo       | Descrição                                                                 | Exemplo                          |
 |-------------|---------------------------------------------------------------------------|----------------------------------|
-| `steamID`   | Identificador único do jogador na Steam. Serve como chave do registro.    | `"76561198868988100"`            |
 | `userName`      | Nome do jogador no momento em que recebeu o kit.                          | `"player1"`                      |
+| `steamID`   | Identificador único do jogador na Steam. Serve como chave do registro.    | `"76561198868988100"`            |
 | `date`      | Data e hora em que o kit foi entregue ao jogador.                         | `"2025-8-24 16:21:40"`           |
-| `items[]`   | Lista de itens que foram entregues ao jogador.                            | `["Apple","Plum","SodaCan_Cola","Candycane_RedGreen","Rope"]` |
+| `claimedKits[]`   | Lista de kits que foram entregues ao jogador.                            | `\\kitsaude` <br> `\\kitcomida` |
 
 ## 💡 Atenção
 - Dependendo da quantidade de itens a serem entregues, é preciso incluir um container maior, caso contrario não será entregue ao jogador
@@ -348,9 +175,4 @@ Esse arquivo registra **quem já recebeu o kit** e os itens entregues, garantind
 - Quando usar mochilas, as armas irão automaticamente para o slot de armas quando houver, se incluir mais uma arma e não tiver slot, será guardado dentro da mochila caso tenha espaço.
 
 ## 📂 Atualização
-09-09-2025
-- Tradução para 12 idiomas
-- Ajustes na configuração dos itens para usuários VIP's
 
-24-09-2025
-- Ajuste de anexos para armas e equipamentos
