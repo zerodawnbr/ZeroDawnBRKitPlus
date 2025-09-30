@@ -205,7 +205,9 @@ Esse arquivo registra **quem já recebeu o kit** e os kits que foram entregues, 
 ![alt](https://github.com/zerodawnbr/zerodawntoolbox/blob/main/imgs/scriptdayzkitboasvindas.png)
 
 ## 💡 Personalização
-- Caso preciso, personalizamos o MOD conforme a sua necessidade.
+- Caso precise, personalizamos o MOD conforme a sua necessidade.
 
-## 📂 Atualização
+## 🎮 Oficina na Steam
+[Oficina Zero Dawn](https://steamcommunity.com/id/R0dr1g0_DEV/myworkshopfiles/?appid=221100)
 
+## 📂 Atualizações
