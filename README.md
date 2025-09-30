@@ -1,11 +1,15 @@
 ![Banner do Mod](https://github.com/zerodawnbr/zerodawntoolbox/blob/main/imgs/zerodawntoolbox2.jpg)
 
-# 🎁 Kit de Boas-Vindas
+# 🎁 Kit de Boas-Vindas Plus
 
-O **Kit de Boas-Vindas** é um recurso que entrega itens iniciais para o jogador quando ele entra no servidor pela primeira vez.  
-Ele foi criado para facilitar o início da jornada e tornar a experiência mais divertida.
+O **Kit de Boas-Vindas Plus** é uma versão aprimorada do kit já existente. Ele não funciona em conjunto com o kit padrão, mas sim como uma alternativa com recursos adicionais.
 
-Necessário ter o MOD @CF instalado
+Assim como o kit original, ele concede itens iniciais ao jogador na sua primeira entrada no servidor, ajudando a tornar o começo da jornada mais fácil e divertido. A diferença é que esta versão traz novas funcionalidades: você pode enviar kits para todos os jogadores de uma vez ou definir grupos específicos que receberão determinados kits.
+
+Para utilizá-lo é necessário ter o **MOD @CF** instalado.
+
+O **[Kit de Boas-Vindas](https://github.com/zerodawnbr/zerodawntoolbox/wiki/Kit-Boas-Vindas)** e o **Kit de Boas-Vindas Plus** possuem objetivos semelhantes, mas cada um tem características próprias.
+
 ---
 
 ## 📂 Arquivo de configuração
@@ -33,9 +37,12 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
 
 - **Itens aleatórios**  
   Defina uma porcentagem de chance para spawnar itens aleatórios.  
-  Exemplo: `randomItemPercentage = 50` → 50% de chance de receber o item.
 
 - **Criação de vários kits**  
+  Permite criar vários kits que poderão ser entregues aos jogadores. Porém apenas 1 kit será entregue, evitando o jogador receber o mesmo kit várias vezes.
+
+- **Kit específicos**  
+  Usando o steamID do jogador, você pode definir kits especificos para eles.
 
 ## 💡 Importante
   Para alguns servidores, o uso da barra (\\) no atributo ***kits*** para definir as palavras chaves não funciona, você pode usar outro caractere como **!** ou **-**, ou até mesmo deixar apenas a palavra. Mas cuidado com a palavra que usar para não atrapalhar as mensagens do chat.
@@ -48,12 +55,12 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
     "versao": "1.0.0",
     "info": "The Welcome Kit is a feature that delivers starter items to the player when they first join the server.",
     "spawnInventory": 0,
-    "message1": "Receba o seu kit",
-    "message2": "O kit foi entregue",
-    "message3": "Você já recebeu o seu pacote.",
+    "message1": "Entrega de kit.",
+    "message2": "O seu kit foi entregue.",
+    "message3": "Você já recebeu o seu kit!",
     "NotificationInChat": 1,
     "kits": {
-        "\\kitexemplo": {
+        "\\kitexemplo1": {
             "container": "WoodenCrate",
             "items": [
                 {
@@ -63,7 +70,25 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
                     "chance": 1.0,
                     "attachments": []
                 }
+            ],
+            "steamID": [
+                    "00000000000000000000",
+                    "00000000000000000001"
             ]
+        },
+        {
+        "\\kitexemplo2": {
+            "container": "SeaChest",
+            "items": [
+                {
+                    "classType": "Plum",
+                    "quantityMax": 2,
+                    "health": 1.0,
+                    "chance": 0.5,
+                    "attachments": []
+                }
+            ],
+            "steamID": []
         }
     }
 }
@@ -102,6 +127,7 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
 | `nome do kit`| Você pode definir um nome qualquer para o kit.          | `\kitarmas` <br> `\kitsaude` <br>  etc...         |
 | `container`  | Define o contêiner usado para entregar os itens. Pode ser caixa, barril, baú, etc.              | `"WoodenCrate"`         |
 | `items`      | itens que serão entregues             | `[ ]`     |
+| `steamID`    | Steam ID de jogadores que receberão, caso esteja em branco, liberado para todos.             | `[ ]`     |
 
 ## Estrutura dos `itens`
 
@@ -173,6 +199,13 @@ Esse arquivo registra **quem já recebeu o kit** e os kits que foram entregues, 
 - Dependendo da quantidade de itens a serem entregues, é preciso incluir um container maior, caso contrario não será entregue ao jogador
 - Se incluir uma mochila no atributo **container** e definir **spawnInventory** como 1. A mochila será colocada nas costas do jogador (desde que não haja outra).
 - Quando usar mochilas, as armas irão automaticamente para o slot de armas quando houver, se incluir mais uma arma e não tiver slot, será guardado dentro da mochila caso tenha espaço.
+
+## 📜 Registros de logs
+
+![alt](https://github.com/zerodawnbr/zerodawntoolbox/blob/main/imgs/scriptdayzkitboasvindas.png)
+
+## 💡 Personalização
+- Caso preciso, personalizamos o MOD conforme a sua necessidade.
 
 ## 📂 Atualização
 
