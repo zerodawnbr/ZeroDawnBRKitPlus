@@ -101,7 +101,7 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
 |--------------|---------------------------------------------------------|---------|
 | `nome do kit`| Você pode definir um nome qualquer para o kit.          | `\kitarmas` <br> `\kitsaude` <br>  etc...         |
 | `container`  | Define o contêiner usado para entregar os itens. Pode ser caixa, barril, baú, etc.              | `"WoodenCrate"`         |
-| `items`      | itens que serão entregues             |          |
+| `items`      | itens que serão entregues             | `[ ]`     |
 
 ## Estrutura dos `itens`
 
@@ -111,7 +111,7 @@ Ao iniciar o servidor pela primeira vez, é criado automaticamente o arquivo de 
 | `quantityMax`   | Quantidade do item a ser entregue.                      | `1`       |
 | `health`   | Saúde do item a ser entregue. 1 = 100%, 0.7 = 70%, etc...                     | `1.0`       |
 | `chance`   | Chance do item a ser entregue. 1 = 100%, 0.7 = 70%, etc...                     | `1.0`       |
-| `attachments`| Permite anexar itens ao item principal.                 |          |
+| `attachments`| Permite anexar itens ao item principal.                 | `[ ]`      |
 
 ---
 
